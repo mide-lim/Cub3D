@@ -1,0 +1,32 @@
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <math.h>
+# include "./minilibx-linux/mlx.h"
+# include "cub3D_types.h"
+
+#define	WINDOW_WIDTH 1366
+#define WINDOW_HEIGHT 768
+#define RED 0xFF0000
+#define GREEN 0x00FF00
+#define BLUE 0x0000FF
+#define KEY_ESC 65307
+
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
+/* app */
+// int		game_init(t_game *g);
+// int		game_destroy(t_game *g, int code);
+
+#endif
