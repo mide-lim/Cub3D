@@ -2,8 +2,10 @@
 # define CUB3D_H
 
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include <math.h>
 # include "./minilibx-linux/mlx.h"
 # include "cub3D_types.h"

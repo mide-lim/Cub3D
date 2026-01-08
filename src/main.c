@@ -78,10 +78,10 @@ int	key_press(int keycode, t_mlx *data)
 
 int	main(void)
 {
-	// void	*mlx;
-    // void	*mlx_win;
     t_img	img;
     t_mlx	mlx_data;
+
+    parse_cub_file(&mlx_data, "maps/map.cub");
 
 	mlx_data.mlx = mlx_init();
 	mlx_data.win = mlx_new_window(mlx_data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");
@@ -94,7 +94,7 @@ int	main(void)
     mlx_hook(mlx_data.win, ON_DESTROY, 0, clean_exit, &mlx_data);
     mlx_hook(mlx_data.win, ON_KEYDOWN, 1L << 0, key_press, &mlx_data);
 
-    draw_square_4x4(&mlx_data.frame, (WINDOW_WIDTH / 2) - 2, (WINDOW_HEIGHT / 2) - 2, RED);
+    draw_square_4x4(&mlx_data.frame, (WINDOW_WIDTH / 2), (WINDOW_HEIGHT / 2), RED);
     mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.frame.img, 0, 0);
 
 
