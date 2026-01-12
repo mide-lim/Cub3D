@@ -27,7 +27,27 @@ enum {
 	ON_DESTROY = 17
 };
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_len;
+	int		endian;
+	int		w;
+	int		h;
+}	t_img;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_img	frame;
+}	t_mlx;
+
+
 /* app */
+int parse_cub_file(const char *path, t_mlx *game);
 // int		game_init(t_game *g);
 // int		game_destroy(t_game *g, int code);
 

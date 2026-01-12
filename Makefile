@@ -1,33 +1,56 @@
-NAME    := cub3D
-CC      := cc
-CFLAGS  := -Wall -Wextra -Werror -g
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                                              #
+# **************************************************************************** #
 
-# MiniLibX
-MLX_DIR := includes/minilibx-linux
-MLX_INC := -I$(MLX_DIR)
-MLX_LIB := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+NAME	:= cub3D
+CC		:= cc
+CFLAGS	:= -Wall -Wextra -Werror -g
 
-SRC     := src/main.c
-OBJ     := main.o
+OBJDIR	:= obj
+HEADER	:= includes/cub3D.h
 
-all: $(NAME)
+# Libft (opcional)
+LIBFTDIR	:= includes/libft
+LIBFT		:= $(LIBFTDIR)/libft.a
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) -o $(NAME)
+# MiniLibX (Linux)
+MLXDIR	:= includes/minilibx-linux
+MLX		:= $(MLXDIR)/libmlx.a
+MLXINC	:= -I$(MLXDIR)
+MLXFLAGS	:= -L$(MLXDIR) -lmlx -lX11 -lXext -lm
 
-$(OBJ): $(SRC)
-	$(CC) $(CFLAGS) $(MLX_INC) -c $(SRC) -o $(OBJ)
+SRC	:= \
+	src/main.c \
+	src/parser/read_file.c
+
+OBJ	:= $(SRC:%.c=$(OBJDIR)/%.o)
+
+all: library $(NAME)
+
+library:
+	$(MAKE) -C $(LIBFTDIR)
+	$(MAKE) -C $(MLXDIR)
+
+$(NAME): $(OBJ) $(HEADER) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) $(MLXFLAGS)
+
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(MLXINC) -Iincludes -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	$(MAKE) clean -C $(LIBFTDIR)
+	$(MAKE) clean -C $(MLXDIR)
+	rm -rf $(OBJDIR)
 
 fclean: clean
+	$(MAKE) fclean -C $(LIBFTDIR)
 	rm -f $(NAME)
 
 re: fclean all
-
 bonus: all
 
-.PHONY: all clean fclean re bonus
-
-
+.PHONY: all clean fclean re bonus library

@@ -1,23 +1,5 @@
 # include "../includes/cub3D.h"
 
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_len;
-	int		endian;
-	int		w;
-	int		h;
-}	t_img;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	t_img	frame;
-}	t_mlx;
-
 void ft_put_pixel(t_img *data, int x, int y, int color)
 {
     char *pxl;
@@ -76,12 +58,18 @@ int	key_press(int keycode, t_mlx *data)
 
 
 
-int	main(void)
+int	main(int argc, char **argv)
 {
     t_img	img;
     t_mlx	mlx_data;
 
-    parse_cub_file(&mlx_data, "maps/map.cub");
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: %s <map.cub>\n", argv[0]);
+        return (EXIT_FAILURE);
+    }
+
+    parse_cub_file(argv[1], &mlx_data);
 
 	mlx_data.mlx = mlx_init();
 	mlx_data.win = mlx_new_window(mlx_data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");

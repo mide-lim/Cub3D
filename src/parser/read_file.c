@@ -45,7 +45,7 @@ char **read_all_lines(const char *path)
 }
 
 
-int parse_cub_file(const char *path, t_game *game)
+int parse_cub_file(const char *path, t_mlx *game)
 {
     char **lines;
     char **raw_map;
@@ -55,11 +55,13 @@ int parse_cub_file(const char *path, t_game *game)
     int height;
 
     if (!path || !has_cub_extension(path))
-        return err("Error: Invalid file extension. Expected .cub\n");
+        // return err("Error: Invalid file extension. Expected .cub\n");
+        pritnf("Error: Invalid file extension. Expected .cub\n");
     
     lines = read_all_lines(path);
     if (!lines)
-        return err("Error: Could not read file\n");
+        // return err("Error: Could not read file\n");
+        printf("Error: Could not read file\n");
     
     i = 0;
     while (lines[i])
@@ -69,7 +71,7 @@ int parse_cub_file(const char *path, t_game *game)
             i++;
             continue;
         }
-
+        i++;
     }
 
     return 0;
