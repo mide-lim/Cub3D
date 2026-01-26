@@ -9,6 +9,8 @@
 # include <math.h>
 # include "./minilibx-linux/mlx.h"
 # include "cub3D_types.h"
+#include "./libft/libft.h"
+# include "./get_next_line/get_next_line.h"
 
 #define	WINDOW_WIDTH 1366
 #define WINDOW_HEIGHT 768
