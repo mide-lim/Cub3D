@@ -9,7 +9,7 @@
 # include <math.h>
 # include "./minilibx-linux/mlx.h"
 # include "cub3D_types.h"
-#include "./libft/libft.h"
+# include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
 
 #define	WINDOW_WIDTH 1366
@@ -47,6 +47,8 @@ typedef struct s_mlx
 	t_img	frame;
 }	t_mlx;
 
+/* GNL */
+char	*get_next_line(int fd);
 
 /* app */
 int parse_cub_file(const char *path, t_mlx *game);

@@ -1,25 +1,26 @@
-NAME := get_next_line
-CC := gcc
-CFLAGS := -Wall -Wextra -Werror
-SRCS := get_next_line.c get_next_line_utils.c
-OBJS := $(SRCS:.c=.o)
-HDR := get_next_line.h
+CC      = gcc
+CFLAGS  = -Wall -Wextra -Werror
+AR      = ar rcs
+RM      = rm -f
 
+NAME    = get_next_line.a
 
+SRCS    = get_next_line.c
+OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
-%.o: %.c $(HDR)
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

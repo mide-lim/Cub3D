@@ -20,6 +20,7 @@ GNLDIR	:= includes/get_next_line
 GNL		:= $(GNLDIR)/get_next_line.a
 
 # MiniLibX (Linux)
+MLXREPO = https://github.com/42paris/minilibx-linux.git
 MLXDIR	:= includes/minilibx-linux
 MLX		:= $(MLXDIR)/libmlx.a
 MLXINC	:= -I$(MLXDIR)
@@ -33,13 +34,21 @@ OBJ	:= $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: library $(NAME)
 
-library:
+$(MLX):
+	@if [ ! -f "$(MLX)" ]; then \
+		echo "📦 minilibx ausente ou incompleta, instalando..."; \
+		rm -rf $(MLXDIR); \
+		git clone $(MLXREPO) $(MLXDIR); \
+		$(MAKE) -C $(MLXDIR); \
+	fi
+
+library: $(MLX)
 	$(MAKE) -C $(LIBFTDIR)
 	$(MAKE) -C $(GNLDIR)
-	$(MAKE) -C $(MLXDIR)
 
-$(NAME): $(OBJ) $(HEADER) $(LIBFT) $(MLX) $(GNL)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) $(MLXFLAGS) $(GNL)
+
+$(NAME): $(OBJ) $(HEADER) $(GNL) $(LIBFT)  $(MLX) 
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(GNL) $(LIBFT)  $(MLXFLAGS) 
 
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(@D)

@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
         return (EXIT_FAILURE);
     }
 
-    parse_cub_file(argv[1], &mlx_data);
+    // parse_cub_file(argv[1], &mlx_data);
 
 	mlx_data.mlx = mlx_init();
 	mlx_data.win = mlx_new_window(mlx_data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");

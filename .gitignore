@@ -1,0 +1,15 @@
+minilibx-linux/
+*.o
+*.a
+*.so
+*.out
+*.exe
+*.dSYM/
+*.log
+*.tmp
+*.swp
+*.bak
+.DS_Store
+.vscode/
+*~
+\#*\#
