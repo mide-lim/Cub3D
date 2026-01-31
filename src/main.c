@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 {
     t_img	img;
     t_mlx	mlx_data;
+	int tmp;
 
     if (argc != 2)
     {
@@ -69,7 +70,10 @@ int	main(int argc, char **argv)
         return (EXIT_FAILURE);
     }
 
-    // parse_cub_file(argv[1], &mlx_data);
+    tmp = parse_cub_file(argv[1], &mlx_data);
+	printf("Parse result: %d\n", tmp);
+    // if (tmp != 0)
+    //     return (tmp);
 
 	mlx_data.mlx = mlx_init();
 	mlx_data.win = mlx_new_window(mlx_data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");

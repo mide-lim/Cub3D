@@ -52,6 +52,7 @@ char	*get_next_line(int fd);
 
 /* app */
 int parse_cub_file(const char *path, t_mlx *game);
+int err(const char *msg);
 // int		game_init(t_game *g);
 // int		game_destroy(t_game *g, int code);
 
