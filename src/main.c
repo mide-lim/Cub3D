@@ -70,10 +70,12 @@ int	main(int argc, char **argv)
         return (EXIT_FAILURE);
     }
 
-    tmp = parse_cub_file(argv[1], &mlx_data);
+	ft_memset(&mlx_data, 0, sizeof(t_mlx));
+	printf("Parsing file: %s\n", argv[1]);
+    tmp = parser(argv[1], &mlx_data);
 	printf("Parse result: %d\n", tmp);
-    // if (tmp != 0)
-    //     return (tmp);
+	if (tmp == -1)
+		return (EXIT_FAILURE);
 
 	mlx_data.mlx = mlx_init();
 	mlx_data.win = mlx_new_window(mlx_data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");

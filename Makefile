@@ -28,7 +28,9 @@ MLXFLAGS	:= -L$(MLXDIR) -lmlx -lX11 -lXext -lm
 
 SRC	:= \
 	src/main.c \
-	src/parser/read_file.c \
+	src/parser/parser.c \
+	src/parser/reader.c \
+	src/parser/read_all_lines.c \
 	src/error/error.c \
 
 OBJ	:= $(SRC:%.c=$(OBJDIR)/%.o)

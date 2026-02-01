@@ -51,8 +51,10 @@ typedef struct s_mlx
 char	*get_next_line(int fd);
 
 /* app */
-int parse_cub_file(const char *path, t_mlx *game);
-int err(const char *msg);
+int	parser(const char *path, t_mlx *game);
+char	**reader(const char *path);
+int	err(const char *msg);
+char	**read_all_lines(const char *path);
 // int		game_init(t_game *g);
 // int		game_destroy(t_game *g, int code);
 
