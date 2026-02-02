@@ -1,4 +1,4 @@
-#include   "../../includes/cub3D.h"
+#include   "../../../includes/cub3D.h"
 
 static int has_cub_extension(const char *path)
 {

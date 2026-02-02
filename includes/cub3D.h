@@ -11,6 +11,7 @@
 # include "cub3D_types.h"
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
+# include "parser.h"
 
 #define	WINDOW_WIDTH 1366
 #define WINDOW_HEIGHT 768
@@ -45,6 +46,7 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 	t_img	frame;
+	t_cfg	config;
 }	t_mlx;
 
 /* GNL */

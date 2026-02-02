@@ -6,11 +6,13 @@
 # **************************************************************************** #
 
 NAME	:= cub3D
-CC		:= cc
+CC		:= gcc
 CFLAGS	:= -Wall -Wextra -Werror -g
 
 OBJDIR	:= obj
-HEADER	:= includes/cub3D.h
+HEADER	:= \
+		includes/cub3D.h \
+		includes/parser.h \
 
 # Libft (opcional)
 LIBFTDIR	:= includes/libft
@@ -29,8 +31,11 @@ MLXFLAGS	:= -L$(MLXDIR) -lmlx -lX11 -lXext -lm
 SRC	:= \
 	src/main.c \
 	src/parser/parser.c \
-	src/parser/reader.c \
-	src/parser/read_all_lines.c \
+	src/parser/reader/reader.c \
+	src/parser/reader/read_all_lines.c \
+	src/parser/configs/configs.c \
+	src/parser/configs/configs_utils.c \
+	src/parser/configs/elements.c \
 	src/error/error.c \
 
 OBJ	:= $(SRC:%.c=$(OBJDIR)/%.o)
